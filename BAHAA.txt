@@ -1,0 +1,105 @@
+#include <iostream>
+
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    int num , len ,arry []={}, counter , counter1 ,counter2 , counter3 , counter5=2, counter4=1,  num1 , row ,column , num2 ;
+    int key1[]={0} , key[6] = {0}, counter11=0 ,counter12=1 ;
+    string message , ke , code ;
+    char  letters[6] [6] ={{'a','b','c','d','e','f'},
+                          {'g','h','i','j','k','l'},
+                          {'m','n','o','p','q','r'},
+                          {'s','t','u','v','w','x'},
+                          {'y','z',' ','!','#','@'},
+                          {'$','%','^','&','*','?'}},
+      ch = ' ' ;
+     cout << "Ahlan ya user ya habibi. " << endl ;
+    cout << "What do you like to do today? " << endl ;
+    cout << "To cipher a message enter 1 " << endl ;
+    cout << " To Decipher a message2 enter  " << endl ;
+    cout << "To end program enter 3 " << endl ;
+    cout << "Enter number " << endl ;
+    cin >> num ;
+    if ( num == 1 ) // th  cipher a message
+    {
+        cout << "The key must not accede 6 digit " << endl;
+        cout << " enter the key " << endl ;
+        cin >> ke ;
+        for (counter = 0 ; counter < 6 ; counter ++ )
+        {
+            ch = ke[counter] ;
+            num = int (ch) ;
+            num = num - 48 ;
+            key [counter] = num ;
+        }
+        cin.ignore() ;
+        cout << "  Please enter the message to cipher " << endl ;
+         getline(cin,message)  ;
+        len = message.length() ; // length of the message
+        for ( counter = 0 ; counter <= len ; counter ++ ) // to iterate through the letters of the message
+        {
+            ch = message[counter];
+            for (counter1 = 0 ; counter1 < 6 ; counter1 ++ )
+            {
+                for( counter2 = 0 ; counter2 < 6 ; counter2 ++)
+                     if (ch == letters [counter1] [counter2])
+                     cout << key[counter1] <<key[counter2];
+            }
+        }
+    }
+    if (num == 2)
+    {
+        cout << "The key must not accede 6 digit " << endl;
+        cout << " enter the key " << endl ;
+        cin >> ke ;
+        for (counter = 0 ; counter < 6 ; counter ++ )
+        {
+            ch = ke[counter] ;
+            num = int (ch) ;
+            num = num - 48 ;
+            key [counter] = num ;
+        }
+         cin.ignore();
+         cout << " enter the code that you want to decipher it must be even number " << endl ;
+           getline(cin,code) ;
+           len = code.length() ;
+           for(counter=0 ; counter<=len+1 ; counter ++)
+           {
+             ch = code[counter] ;
+             num = int (ch) ;
+             num = num - 48 ;
+           for (counter11=0 ; counter11 < 6 ; counter11 ++)
+           {
+             if (num == key[counter11])
+             {
+                row = counter11 ;
+             }
+           }
+             ch = code[counter+=1] ;
+
+             num1 = int (ch) ;
+             num1 = num1 - 48 ;
+           for (counter12=0 ; counter12 < 6 ; counter12 ++)
+           {
+             if (num1 == key[counter12])
+             {
+                column = counter12 ;
+             }
+           }
+           cout << letters[row] [column] ;
+
+           }
+            cout << endl ;
+
+    }
+      if ( num == 3)
+      {
+          return 0 ;
+      }
+
+    return 0;
+}
+
